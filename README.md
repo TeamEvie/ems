@@ -8,7 +8,7 @@ Currently, the EMS stack works via multiple gateway connections to the same bot 
 
 ## Registering application commands
 
-If a microservice depends on its application commands, it shouldn't register them. Rather the [bot](https://github.com/TeamEvie/Evie/tree/main/services/bot) should, here's a ping command for example:
+If a microservice depends on its application commands, it shouldn't register them. Rather the [core](https://github.com/TeamEvie/Evie/tree/main/services/bot) should, here's a ping command for example:
 
 ### Registering:
 
