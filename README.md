@@ -1,3 +1,4 @@
+
 # ems 🐶🔧
 
 Evie's codespace keeps growing uncontrollably, so we decided to split every module into its microservices. This gives us the freedom to create our modules in whatever languages we desire, make it easier to maintain, and add more features to Evie.  
@@ -5,6 +6,10 @@ Evie's codespace keeps growing uncontrollably, so we decided to split every modu
 ## How does it work?  
 
 Currently, the EMS stack works via multiple gateway connections to the same bot account and each microservice handles its interactions. In the future, we plan to proxy the Discord gateway and REST API to filter interactions to the microservice processes.
+
+## Configuration
+
+Most EMS's would require per guild configuraition with the expection of static EMS's. Use gRPC to communicate with the [core's api](https://github.com/TeamEvie/Evie/blob/main/protos/leash.proto), otherwise/also you can use Redis for non-guild configuration for example a user's level.
 
 ## Registering application commands
 
