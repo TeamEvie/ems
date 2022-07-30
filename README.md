@@ -5,7 +5,31 @@ Evie's codespace keeps growing uncontrollably, so we decided to split every modu
 
 ## How does it work?  
 
-Currently, the EMS stack works via multiple gateway connections to the same bot account and each microservice handles its interactions. In the future, we plan to proxy the Discord gateway and REST API to filter interactions to the microservice processes.
+Each EMS should be able to process an environment variable `REST_PROXY` and use it as its base Discord API constant. This will make every request go through the proxy and also tell the EMS to use [ClientPack](https://github.com/TeamEvie/ClientPack) our Gateway proxy. At the time of writing this ClientPack will send every gateway event, though in the future we will mixin command names and interaction custom names in the identify payload to specify what the EMS should get sent.
+
+### Disnake Example
+
+```py
+proxy_on = os.environ.get("REST_PROXY") is not None
+
+if proxy_on:
+    http.Route.BASE = os.environ.get("REST_PROXY")
+    print("Using proxy")
+else:
+    print("Not using proxy")
+```
+
+### Discord.js Example
+
+```js
+const client = new Client({
+  intents: 37383,
+  rest: {
+    api: getSecret("REST_PROXY", undefined),
+  },
+  shards: "auto",
+});
+```
 
 ## Configuration
 
